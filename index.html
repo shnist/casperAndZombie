@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My testing page</title>
+		<style>
+			#widget.active {
+				width: 50px;
+				height: 50px;
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body onload="LBi.tdd.init()">
+		<div id="widget"></div>
+		<a href="#" class="theToggle">Click me!</a>
+
+
+		<script>
+			var LBi = window.LBi || {};
+
+			LBi.tdd = (function (){
+				var widget = document.getElementById('widget');
+					
+				function removeClass (element) {
+					element.className = '';
+				}
+
+				function addClass (element, className) {
+					element.className = className;
+				}
+
+				function toggle () {
+					if (widget.className === 'active'){
+						removeClass(widget);
+					} else {
+						addClass(widget, 'active');
+					}
+				}
+
+				function init () {
+					var toggleElement = document.querySelector('.theToggle');
+					
+					toggleElement.addEventListener('click', toggle, false);
+				}
+
+				return {
+					init: init
+				}
+			}());
+		</script>
+	</body>
+</html>	
