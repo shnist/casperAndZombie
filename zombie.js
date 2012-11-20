@@ -24,3 +24,12 @@ describe('Page loads and expected elements exist', function () {
 	});
 
 });
+
+describe('Expected widget behaviour', function () {
+
+	it('should have an active class after toggle click', function (){
+		this.browser.clickLink('theToggle', function (e, browser, status) {
+			assert.equal(this.browser.query('#widget').className, 'active');
+		});
+	});
+})
